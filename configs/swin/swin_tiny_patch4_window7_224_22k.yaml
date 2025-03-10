@@ -1,0 +1,22 @@
+DATA:
+  DATASET: Plant
+  IMG_SIZE: 448
+MODEL:
+  TYPE: swin
+  NAME: swin_tiny_patch4_window7_224_22k
+  DROP_PATH_RATE: 0.1
+  SWIN:
+    EMBED_DIM: 96
+    DEPTHS: [ 2, 2, 6, 2 ]
+    NUM_HEADS: [ 3, 6, 12, 24 ]
+    WINDOW_SIZE: 7
+TRAIN:
+  EPOCHS: 100
+  WARMUP_EPOCHS: 5
+  WEIGHT_DECAY: 0.05
+  BASE_LR: 1e-4 # 4096 batch-size
+  WARMUP_LR: 1.25e-7
+  MIN_LR: 1e-6
+
+
+#python -m torch.distributed.launch --nproc_per_node 1 --master_port 12342  main.py --cfg configs/swin/swin_tiny_patch4_window7_224_22k.yaml --pretrained /home/pl/htt/swin-transformer-or/weights/swin_tiny_patch4_window7_224_22k.pth --data-path /mnt/sdb1/data/plant-pathology-2021-fgvc8/data --batch-size 10 --accumulation-steps 8 [--use-checkpoint]
