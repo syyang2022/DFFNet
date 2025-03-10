@@ -1,2 +1,2 @@
 # DFFNet
-A Dual-Branch Fusion Network for Apple Leaf Disease Recognition via Frequency-Spatial Domain Synergy
+Apple Leaf Disease Classification Using Dual-Branch Network with Frequency and Multispectral Fusion
